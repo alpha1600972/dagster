@@ -20,3 +20,6 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+
+dagster/.gitignore
+dagster/dagster_universite/.env

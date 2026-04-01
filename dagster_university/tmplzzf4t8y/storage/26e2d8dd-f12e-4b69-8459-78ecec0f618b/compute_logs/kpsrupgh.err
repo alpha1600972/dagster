@@ -1,0 +1,2 @@
+[32m2026-04-01 17:00:36 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_1 - 26e2d8dd-f12e-4b69-8459-78ecec0f618b - 78379 - LOGS_CAPTURED - Started capturing logs in process (pid: 78379).
+[32m2026-04-01 17:00:36 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_1 - 26e2d8dd-f12e-4b69-8459-78ecec0f618b - 78379 - taxi_trips_file - STEP_START - Started execution of step "taxi_trips_file".
