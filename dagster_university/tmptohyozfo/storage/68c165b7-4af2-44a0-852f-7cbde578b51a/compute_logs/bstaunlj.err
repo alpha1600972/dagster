@@ -1,0 +1,30 @@
+[32m2026-03-27 23:39:29 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 68c165b7-4af2-44a0-852f-7cbde578b51a - 16186 - LOGS_CAPTURED - Started capturing logs in process (pid: 16186).
+[32m2026-03-27 23:39:29 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 68c165b7-4af2-44a0-852f-7cbde578b51a - 16186 - manhattan_map - STEP_START - Started execution of step "manhattan_map".
+[32m2026-03-27 23:39:29 +0100[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB_0 - 68c165b7-4af2-44a0-852f-7cbde578b51a - 16186 - manhattan_map - STEP_FAILURE - Execution of step "manhattan_map" failed.
+
+dagster._core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "manhattan_map"::
+
+ValueError: aspect must be finite and positive 
+
+Stack Trace:
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/utils.py", line 54, in op_execution_error_boundary
+    yield
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_utils/__init__.py", line 473, in iterate_with_context
+    next_output = next(iterator)
+                  ^^^^^^^^^^^^^^
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 141, in _coerce_op_compute_fn_to_iterator
+    result = invoke_compute_fn(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 129, in invoke_compute_fn
+    return fn(context, **args_to_pass) if context_arg_provided else fn(**args_to_pass)
+                                                                    ^^^^^^^^^^^^^^^^^^
+  File "/home/babavos/tp_note/dagster_university/dagster_university/assets/metrics.py", line 49, in manhattan_map
+    trips_by_zone.plot(column="num_trips", cmap="plasma", legend=True, ax=ax, edgecolor="black")
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/geopandas/plotting.py", line 962, in __call__
+    return plot_dataframe(data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/geopandas/plotting.py", line 662, in plot_dataframe
+    ax.set_aspect(1 / np.cos(y_coord * np.pi / 180))
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/matplotlib/axes/_base.py", line 1728, in set_aspect
+    raise ValueError("aspect must be finite and positive ")
+[0m

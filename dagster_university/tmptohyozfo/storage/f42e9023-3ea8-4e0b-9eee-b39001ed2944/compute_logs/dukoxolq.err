@@ -1,0 +1,5 @@
+[32m2026-03-27 16:31:51 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - f42e9023-3ea8-4e0b-9eee-b39001ed2944 - 81368 - LOGS_CAPTURED - Started capturing logs in process (pid: 81368).
+[32m2026-03-27 16:31:51 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - f42e9023-3ea8-4e0b-9eee-b39001ed2944 - 81368 - taxi_trips - STEP_START - Started execution of step "taxi_trips".
+[32m2026-03-27 16:31:55 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - f42e9023-3ea8-4e0b-9eee-b39001ed2944 - 81368 - taxi_trips - STEP_OUTPUT - Yielded output "result" of type "Nothing". (Type check passed).
+[32m2026-03-27 16:31:55 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - f42e9023-3ea8-4e0b-9eee-b39001ed2944 - 81368 - taxi_trips - ASSET_MATERIALIZATION - Materialized value taxi_trips.
+[32m2026-03-27 16:31:55 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - f42e9023-3ea8-4e0b-9eee-b39001ed2944 - 81368 - taxi_trips - STEP_SUCCESS - Finished execution of step "taxi_trips" in 4.1s.

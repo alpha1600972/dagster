@@ -1,0 +1,5 @@
+[32m2026-04-01 16:09:22 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_1 - d57e6760-50e7-415c-b1d6-36299e23521b - 6004 - LOGS_CAPTURED - Started capturing logs in process (pid: 6004).
+[32m2026-04-01 16:09:22 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_1 - d57e6760-50e7-415c-b1d6-36299e23521b - 6004 - taxi_zones_file - STEP_START - Started execution of step "taxi_zones_file".
+[32m2026-04-01 16:09:27 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_1 - d57e6760-50e7-415c-b1d6-36299e23521b - 6004 - taxi_zones_file - STEP_OUTPUT - Yielded output "result" of type "Nothing". (Type check passed).
+[32m2026-04-01 16:09:27 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_1 - d57e6760-50e7-415c-b1d6-36299e23521b - 6004 - taxi_zones_file - ASSET_MATERIALIZATION - Materialized value taxi_zones_file.
+[32m2026-04-01 16:09:27 +0200[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_1 - d57e6760-50e7-415c-b1d6-36299e23521b - 6004 - taxi_zones_file - STEP_SUCCESS - Finished execution of step "taxi_zones_file" in 4.61s.

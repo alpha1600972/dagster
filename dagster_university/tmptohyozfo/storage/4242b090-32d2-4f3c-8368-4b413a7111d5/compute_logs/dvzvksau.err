@@ -1,0 +1,29 @@
+[32m2026-03-27 19:05:40 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 4242b090-32d2-4f3c-8368-4b413a7111d5 - 98618 - LOGS_CAPTURED - Started capturing logs in process (pid: 98618).
+[32m2026-03-27 19:05:40 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 4242b090-32d2-4f3c-8368-4b413a7111d5 - 98618 - trips_by_week - STEP_START - Started execution of step "trips_by_week".
+[32m2026-03-27 19:05:40 +0100[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB - 4242b090-32d2-4f3c-8368-4b413a7111d5 - 98618 - trips_by_week - STEP_FAILURE - Execution of step "trips_by_week" failed.
+
+dagster._core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "trips_by_week"::
+
+_duckdb.ParserException: Parser Error: syntax error at or near "SUM"
+
+LINE 5:         SUM(passenger_count) as passenger_count
+                ^
+
+Stack Trace:
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/utils.py", line 54, in op_execution_error_boundary
+    yield
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_utils/__init__.py", line 473, in iterate_with_context
+    next_output = next(iterator)
+                  ^^^^^^^^^^^^^^
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 141, in _coerce_op_compute_fn_to_iterator
+    result = invoke_compute_fn(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 129, in invoke_compute_fn
+    return fn(context, **args_to_pass) if context_arg_provided else fn(**args_to_pass)
+                                                                    ^^^^^^^^^^^^^^^^^^
+  File "/home/babavos/tp_note/dagster_university/dagster_university/assets/metrics.py", line 74, in trips_by_week
+    with duckdb.connect(os.getenv("DUCKDB_DATABASE")) as conn:
+  File "/home/babavos/tp_note/dagster_university/dagster_university/assets/metrics.py", line 75, in trips_by_week
+    trips_by_week = conn.execute(query).fetch_df()
+                    ^^^^^^^^^^^^^^^^^^^
+[0m

@@ -1,0 +1,40 @@
+[32m2026-03-28 00:09:07 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 4b7c8474-6076-49c2-9df0-035c29cf464e - 85409 - LOGS_CAPTURED - Started capturing logs in process (pid: 85409).
+[32m2026-03-28 00:09:07 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 4b7c8474-6076-49c2-9df0-035c29cf464e - 85409 - taxi_trips_file - STEP_START - Started execution of step "taxi_trips_file".
+[32m2026-03-28 00:09:07 +0100[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB_0 - 4b7c8474-6076-49c2-9df0-035c29cf464e - 85409 - taxi_trips_file - STEP_FAILURE - Execution of step "taxi_trips_file" failed.
+
+dagster._core.errors.DagsterInvariantViolationError: Cannot access partition_key for a non-partitioned run
+
+Stack Trace:
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/execute_plan.py", line 282, in dagster_event_sequence_for_step
+    for step_event in check.generator(step_events):
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/execute_step.py", line 494, in core_dagster_event_sequence_for_step
+    for user_event in _step_output_error_checked_user_event_sequence(
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/execute_step.py", line 183, in _step_output_error_checked_user_event_sequence
+    for user_event in user_event_sequence:
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/execute_step.py", line 88, in _process_asset_results_to_events
+    for user_event in user_event_sequence:
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/compute.py", line 198, in execute_core_compute
+    for step_output in _yield_compute_results(step_context, inputs, compute_fn, compute_context):
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/compute.py", line 167, in _yield_compute_results
+    for event in iterate_with_context(
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_utils/__init__.py", line 473, in iterate_with_context
+    next_output = next(iterator)
+                  ^^^^^^^^^^^^^^
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 141, in _coerce_op_compute_fn_to_iterator
+    result = invoke_compute_fn(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 129, in invoke_compute_fn
+    return fn(context, **args_to_pass) if context_arg_provided else fn(**args_to_pass)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/babavos/tp_note/dagster_university/dagster_university/assets/trips.py", line 19, in taxi_trips_file
+    partition_date_str = context.partition_key
+                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/context/compute.py", line 1667, in partition_key
+    return self.op_execution_context.partition_key
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/context/compute.py", line 315, in partition_key
+    return self._step_execution_context.partition_key
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/context/system.py", line 396, in partition_key
+    raise DagsterInvariantViolationError(
+[0m

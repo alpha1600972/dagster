@@ -1,0 +1,29 @@
+[32m2026-03-27 16:57:23 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - a9f4f5ac-a605-41fc-96fa-4602176aaabb - 9516 - LOGS_CAPTURED - Started capturing logs in process (pid: 9516).
+[32m2026-03-27 16:57:23 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - a9f4f5ac-a605-41fc-96fa-4602176aaabb - 9516 - manhattan_stats - STEP_START - Started execution of step "manhattan_stats".
+[32m2026-03-27 16:57:23 +0100[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB - a9f4f5ac-a605-41fc-96fa-4602176aaabb - 9516 - manhattan_stats - STEP_FAILURE - Execution of step "manhattan_stats" failed.
+
+dagster._core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "manhattan_stats"::
+
+_duckdb.BinderException: Binder Error: Table "zones" does not have a column named "zone_id"
+
+Candidate bindings: : "zone"
+
+LINE 8:         LEFT JOIN zones ON trips.pickup_zone_id = zones.zone_id
+                                                          ^
+
+Stack Trace:
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/utils.py", line 54, in op_execution_error_boundary
+    yield
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_utils/__init__.py", line 473, in iterate_with_context
+    next_output = next(iterator)
+                  ^^^^^^^^^^^^^^
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 141, in _coerce_op_compute_fn_to_iterator
+    result = invoke_compute_fn(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 129, in invoke_compute_fn
+    return fn(context, **args_to_pass) if context_arg_provided else fn(**args_to_pass)
+                                                                    ^^^^^^^^^^^^^^^^^^
+  File "/home/babavos/tp_note/dagster_university/dagster_university/assets/metrics.py", line 29, in manhattan_stats
+    trips_by_zone = conn.execute(query).fetch_df()
+                    ^^^^^^^^^^^^^^^^^^^
+[0m

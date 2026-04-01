@@ -1,0 +1,24 @@
+[32m2026-03-27 23:36:49 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 6c8877b0-fa7c-46b9-92cb-9d3a3b06ff82 - 11227 - LOGS_CAPTURED - Started capturing logs in process (pid: 11227).
+[32m2026-03-27 23:36:49 +0100[0m - dagster - [34mDEBUG[0m - __ASSET_JOB_0 - 6c8877b0-fa7c-46b9-92cb-9d3a3b06ff82 - 11227 - trips_by_week - STEP_START - Started execution of step "trips_by_week".
+[32m2026-03-27 23:36:49 +0100[0m - dagster - [34mERROR[0m - [31m__ASSET_JOB_0 - 6c8877b0-fa7c-46b9-92cb-9d3a3b06ff82 - 11227 - trips_by_week - STEP_FAILURE - Execution of step "trips_by_week" failed.
+
+dagster._core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "trips_by_week"::
+
+NameError: name 'partition_date' is not defined. Did you mean: 'partition_date_str'?
+
+Stack Trace:
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/utils.py", line 54, in op_execution_error_boundary
+    yield
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_utils/__init__.py", line 473, in iterate_with_context
+    next_output = next(iterator)
+                  ^^^^^^^^^^^^^^
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 141, in _coerce_op_compute_fn_to_iterator
+    result = invoke_compute_fn(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/babavos/tp_note/venv/lib/python3.12/site-packages/dagster/_core/execution/plan/compute_generator.py", line 129, in invoke_compute_fn
+    return fn(context, **args_to_pass) if context_arg_provided else fn(**args_to_pass)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/babavos/tp_note/dagster_university/dagster_university/assets/metrics.py", line 74, in trips_by_week
+    WHERE  DATE_TRUNC('week', pickup_datetime) + INTERVAL '6 days' = DATE '{partition_date}'
+                                                                            ^^^^^^^^^^^^^^
+[0m
